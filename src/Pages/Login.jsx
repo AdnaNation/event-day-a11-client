@@ -1,8 +1,61 @@
-import { Link } from "react-router-dom";
+import { GoogleAuthProvider } from "firebase/auth";
+import { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import useAuth from "../hooks/useAuth";
 
 const Login = () => {
+  const { signIn, setUser, googleSignIn } = useAuth();
+  const [loginError, setLoginError] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const googleProvider = new GoogleAuthProvider();
   const handleSignIn = (e) => {
     e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    // reset error
+    setLoginError("");
+    signIn(email, password)
+      .then((result) => {
+        const loggedInUser = result.user;
+        setUser(loggedInUser);
+        Swal.fire({
+          title: "Congrats!",
+          text: "You have successfully logged in",
+          icon: "success",
+        });
+        // navigate after login
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoginError(
+          "Can't find the user with the email/password you provided"
+        );
+      });
+  };
+
+  const handleGoogleSingIn = () => {
+    googleSignIn(googleProvider)
+      .then((result) => {
+        const loggedInUser = result.user;
+        console.log(loggedInUser.photoURL);
+        setUser(loggedInUser);
+        Swal.fire({
+          title: "Congrats!",
+          text: "You have successfully logged in",
+          icon: "success",
+        });
+        // navigate after login
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
   return (
     <div className="min-h-screen">
@@ -13,7 +66,7 @@ const Login = () => {
 
         <div className="flex justify-center space-x-4">
           <button
-            // onClick={handleGoogleSingIn}
+            onClick={handleGoogleSingIn}
             aria-label="Log in with Google"
             className="p-3 rounded-lg btn w-full bg-white shadow-xl my-2"
           >
@@ -83,9 +136,9 @@ const Login = () => {
             className="btn btn-block btn-primary text-white my-2"
           />
 
-          {/* {loginError && (
-          <p className="text-red-700 text-center">{loginError}</p>
-        )} */}
+          {loginError && (
+            <p className="text-red-700 text-center">{loginError}</p>
+          )}
 
           <p className="text-center mb-3">
             Don&apos;t have a account? Please{" "}
