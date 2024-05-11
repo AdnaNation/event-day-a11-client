@@ -1,3 +1,4 @@
+import { MdOutlineCelebration } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
@@ -19,9 +20,9 @@ const Navbar = () => {
       {user && (
         <>
           <li>
-            <details>
+            <details className="relative z-10">
               <summary>Dashboard</summary>
-              <ul className="">
+              <ul>
                 <li>
                   <NavLink className="w-[160px]" to="/addService">
                     Add Service
@@ -34,7 +35,7 @@ const Navbar = () => {
                   <NavLink to="/bookedServices">Booked-Services</NavLink>
                 </li>
                 <li>
-                  <NavLink to="serviceToDo">Service-To-Do</NavLink>
+                  <NavLink to="/serviceToDo">Service-To-Do</NavLink>
                 </li>
               </ul>
             </details>
@@ -44,7 +45,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 px-4 shadow-xl">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -74,7 +75,10 @@ const Navbar = () => {
           to="/"
           className=" flex items-center text-xl md:text-3xl font-platypi"
         >
-          <span className="text-sky-600">Event</span>Day
+          <span className="text-sky-600 flex items-center">
+            <MdOutlineCelebration /> Event
+          </span>
+          Day
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
