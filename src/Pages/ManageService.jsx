@@ -1,16 +1,53 @@
+import { useState } from "react";
 import { GiPriceTag } from "react-icons/gi";
 import { MdPlace } from "react-icons/md";
 import { Link, useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 
 const ManageService = () => {
-  const services = useLoaderData();
+  const allServices = useLoaderData();
   const { user } = useAuth();
   const userEmail = user.email;
-  const myServices = services.filter(
+  const loadedServices = allServices.filter(
     (service) => service.providerEmail === userEmail
   );
-  //   console.log(myServices, userEmail);
+  const [myServices, setMyServices] = useState(loadedServices);
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/services/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            // console.log(data);
+
+            if (data.deletedCount > 0) {
+              Swal.fire(
+                "Deleted!",
+                "Your service has been deleted.",
+                "success"
+              );
+              const remaining = myServices.filter(
+                (service) => service._id !== id
+              );
+
+              setMyServices(remaining);
+            }
+          });
+      }
+    });
+  };
   return (
     <div className=" min-h-screen my-5">
       <h2 className="text-center text-3xl md:text-5xl my-3 underline font-platypi">
@@ -60,7 +97,12 @@ const ManageService = () => {
                       Edit
                     </button>
                   </Link>
-                  <button className="btn bg-red-500 text-white">Delete</button>
+                  <button
+                    onClick={() => handleDelete(service._id)}
+                    className="btn bg-red-500 text-white"
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
             </div>

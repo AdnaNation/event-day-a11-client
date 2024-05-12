@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const EditService = () => {
   const service = useLoaderData();
@@ -11,21 +12,37 @@ const EditService = () => {
     const price = form.price.value;
     const serviceArea = form.serviceArea.value;
     const description = form.description.value;
-    const providerName = form.providerName.value;
-    const providerEmail = form.providerEmail.value;
-    const providerImgURL = form.providerImgURL.value;
+
     const editedService = {
       serviceName,
       imgURL,
       price,
       serviceArea,
       description,
-      providerName,
-      providerEmail,
-      providerImgURL,
     };
+
+    // send data to the server
+    fetch(`http://localhost:5000/services/${service._id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(editedService),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            title: "Success!",
+            text: "Your service has been updated Successfully",
+            icon: "success",
+            confirmButtonText: "Ok",
+          });
+        }
+      });
   };
-  console.log(service);
+
   return (
     <div className="min-h-screen pt-14 bg-base-300">
       <div className="bg-white bg-opacity-75 p-2 md:p-6 md:w-3/4 lg:w-2/4 mx-auto rounded-md py-10">
@@ -59,6 +76,7 @@ const EditService = () => {
                   type="text"
                   name="imgURL"
                   placeholder="Service Image URL"
+                  defaultValue={service.imgURL}
                   required
                   className="input input-bordered w-full shadow-xl"
                 />
@@ -69,13 +87,14 @@ const EditService = () => {
           <div className="md:flex mb-8">
             <div className="form-control md:w-1/2">
               <label className="label">
-                <span className="label-text">Price</span>
+                <span className="label-text">Price ($)</span>
               </label>
               <label className="input-group">
                 <input
                   type="text"
                   name="price"
                   placeholder="Price"
+                  defaultValue={service.price}
                   required
                   className="input input-bordered w-full shadow-xl"
                 />
@@ -90,6 +109,7 @@ const EditService = () => {
                   type="text"
                   name="serviceArea"
                   placeholder="Service Area"
+                  defaultValue={service.serviceArea}
                   required
                   className="input input-bordered w-full shadow-xl"
                 />
@@ -107,6 +127,7 @@ const EditService = () => {
                   type="text"
                   name="description"
                   placeholder="Description"
+                  defaultValue={service.description}
                   className="input input-bordered w-full shadow-xl"
                 />
               </label>
@@ -115,7 +136,7 @@ const EditService = () => {
 
           <input
             type="submit"
-            value="Add Your Service"
+            value="Update Your Service"
             className="btn btn-block  btn-primary text-white shadow-xl mb-4 "
           />
         </form>

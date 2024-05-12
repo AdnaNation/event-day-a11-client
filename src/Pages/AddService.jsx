@@ -145,7 +145,7 @@ const AddService = () => {
                   name="providerName"
                   defaultValue={user?.displayName}
                   placeholder="Provider Name"
-                  required
+                  readOnly
                   className="input input-bordered w-full shadow-xl"
                 />
               </label>
@@ -160,7 +160,7 @@ const AddService = () => {
                   name="providerEmail"
                   defaultValue={user?.email}
                   placeholder="Provider Email"
-                  required
+                  readOnly
                   className="input input-bordered w-full shadow-xl"
                 />
               </label>
@@ -177,6 +177,7 @@ const AddService = () => {
                   name="providerImgURL"
                   defaultValue={user?.photoURL}
                   placeholder="Provider Image URL"
+                  readOnly
                   className="input input-bordered w-full shadow-xl"
                 />
               </label>
