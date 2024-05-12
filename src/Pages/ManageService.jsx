@@ -1,20 +1,23 @@
 import { GiPriceTag } from "react-icons/gi";
 import { MdPlace } from "react-icons/md";
 import { Link, useLoaderData } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
-const Services = () => {
+const ManageService = () => {
   const services = useLoaderData();
+  const { user } = useAuth();
+  const userEmail = user.email;
+  const myServices = services.filter(
+    (service) => service.providerEmail === userEmail
+  );
+  //   console.log(myServices, userEmail);
   return (
     <div>
-      <div className="text-center my-6 space-y-3">
-        <h2 className="text-3xl md:text-5xl font-platypi">Our Services</h2>
-        <p className="mx-6">
-          The below are our running services at this moment. Take service and
-          make your day special.
-        </p>
-      </div>
+      <h2 className="text-center text-3xl md:text-5xl my-3 underline">
+        My Services
+      </h2>
       <div className="grid md:grid-cols-2 justify-between container mx-auto gap-8 ">
-        {services.map((service) => (
+        {myServices.map((service) => (
           <div
             key={service._id}
             className=" p-4 dark:bg-gray-50 dark:text-gray-800 shadow-xl rounded-md bg-base-200"
@@ -73,4 +76,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default ManageService;

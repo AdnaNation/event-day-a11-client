@@ -10,7 +10,7 @@ const PopularServices = () => {
   return (
     <div>
       <div className="text-center px-4 my-5">
-        <h2 className=" text-5xl font-platypi">Popular Services</h2>
+        <h2 className="text-3xl md:text-5xl font-platypi">Popular Services</h2>
         <p>
           Discover our most popular event services, designed to bring your
           vision to life.
