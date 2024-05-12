@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 
 const BookService = () => {
@@ -19,7 +20,7 @@ const BookService = () => {
     const serviceDate = form.serviceDate.value;
     const instruction = form.instruction.value;
     const serviceStatus = "pending";
-    console.log({
+    const bookedService = {
       serviceID,
       serviceName,
       serviceImg,
@@ -31,7 +32,28 @@ const BookService = () => {
       serviceDate,
       instruction,
       serviceStatus,
-    });
+    };
+    console.log(bookedService);
+    // send data to the server
+    fetch("http://localhost:5000/booking", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(bookedService),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Congrats!",
+            text: "You have booked this service Successfully",
+            icon: "success",
+            confirmButtonText: "Ok",
+          });
+        }
+      });
   };
   return (
     <div className="min-h-screen pt-14 bg-base-300">
