@@ -44,6 +44,7 @@ const Navbar = () => {
       )}
     </>
   );
+
   return (
     <div className="navbar bg-base-100 px-4 shadow-xl">
       <div className="navbar-start">
