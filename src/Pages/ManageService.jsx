@@ -12,8 +12,8 @@ const ManageService = () => {
   );
   //   console.log(myServices, userEmail);
   return (
-    <div>
-      <h2 className="text-center text-3xl md:text-5xl my-3 underline">
+    <div className=" min-h-screen my-5">
+      <h2 className="text-center text-3xl md:text-5xl my-3 underline font-platypi">
         My Services
       </h2>
       <div className="grid md:grid-cols-2 justify-between container mx-auto gap-8 ">
@@ -22,19 +22,6 @@ const ManageService = () => {
             key={service._id}
             className=" p-4 dark:bg-gray-50 dark:text-gray-800 shadow-xl rounded-md bg-base-200"
           >
-            {" "}
-            <p className="ml-12 -mb-4 font-medium text-gray-400">Provider</p>
-            <div className="flex items-center pb-4 border-bottom">
-              <img
-                className=" rounded-sm w-12 p-1 border bg-base-200 shadow-xl"
-                src={service.providerImgURL}
-                alt=""
-              />
-
-              <div className="font-semibold text-gray-800 border pr-1 bg-base-200 rounded-sm shadow-xl">
-                {service.providerName}
-              </div>
-            </div>
             <div className="space-y-4">
               <div className="space-y-2">
                 <img
@@ -67,6 +54,14 @@ const ManageService = () => {
                     </button>
                   </Link>
                 </p>
+                <div className="flex justify-center gap-20">
+                  <Link to={`/editService/${service._id}`}>
+                    <button className="btn bg-orange-400 text-white px-6">
+                      Edit
+                    </button>
+                  </Link>
+                  <button className="btn bg-red-500 text-white">Delete</button>
+                </div>
               </div>
             </div>
           </div>

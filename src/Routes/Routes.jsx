@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import AddService from "../Pages/AddService";
 import BookService from "../Pages/BookService";
+import EditService from "../Pages/EditService";
 import ErrorPage from "../Pages/ErrorPage";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login";
@@ -63,6 +64,16 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: () => fetch("http://localhost:5000/services"),
+      },
+      {
+        path: "/editService/:id",
+        element: (
+          <PrivateRoute>
+            <EditService></EditService>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/services/${params.id}`),
       },
     ],
   },
