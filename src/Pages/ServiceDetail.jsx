@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const ServiceDetail = () => {
   const service = useLoaderData();
@@ -51,9 +51,9 @@ const ServiceDetail = () => {
             Service Fee: ${service.price}
           </span>
           <p>{service.description}</p>
-          <div className="flex justify-end">
+          <Link to={`/booking/${service._id}`} className="flex justify-end">
             <button className="btn bg-red-300 text-white">Book Now</button>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

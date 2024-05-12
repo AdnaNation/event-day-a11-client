@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import AddService from "../Pages/AddService";
+import BookService from "../Pages/BookService";
 import ErrorPage from "../Pages/ErrorPage";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login";
@@ -39,6 +40,12 @@ const router = createBrowserRouter([
       {
         path: "/service/:id",
         element: <ServiceDetail></ServiceDetail>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/services/${params.id}`),
+      },
+      {
+        path: "/booking/:id",
+        element: <BookService></BookService>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/services/${params.id}`),
       },
