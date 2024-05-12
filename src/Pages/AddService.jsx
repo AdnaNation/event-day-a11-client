@@ -46,8 +46,8 @@ const AddService = () => {
       });
   };
   return (
-    <div className="min-h-screen pt-20">
-      <div className="bg-white bg-opacity-75 p-2 md:p-6 md:w-3/4 lg:w-2/4 mx-auto rounded-md mt-10">
+    <div className="min-h-screen pt-14 bg-base-300">
+      <div className="bg-white bg-opacity-75 p-2 md:p-6 md:w-3/4 lg:w-2/4 mx-auto rounded-md py-10">
         <h2 className="text-3xl font-extrabold font-platypi text-center underline mb-12">
           Add Your Service
         </h2>

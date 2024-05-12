@@ -2,22 +2,13 @@ import { GiPriceTag } from "react-icons/gi";
 import { MdPlace } from "react-icons/md";
 import { Link, useLoaderData } from "react-router-dom";
 
-const PopularServices = () => {
+const Services = () => {
   const services = useLoaderData();
-  const popularServices = services.slice(0, 6);
-  // console.log(services);
-
   return (
     <div>
-      <div className="text-center px-4 my-5">
-        <h2 className=" text-5xl font-platypi">Popular Services</h2>
-        <p>
-          Discover our most popular event services, designed to bring your
-          vision to life.
-        </p>
-      </div>
+      <h2>Our Services</h2>
       <div className="grid md:grid-cols-2 justify-between container mx-auto gap-8 ">
-        {popularServices.map((service) => (
+        {services.map((service) => (
           <div
             key={service._id}
             className=" p-4 dark:bg-gray-50 dark:text-gray-800 shadow-xl rounded-md bg-base-200"
@@ -72,14 +63,8 @@ const PopularServices = () => {
           </div>
         ))}
       </div>
-
-      <div className="text-center my-3">
-        <Link to="/services" className="btn bg-red-300 text-white">
-          Show All
-        </Link>
-      </div>
     </div>
   );
 };
 
-export default PopularServices;
+export default Services;
