@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -45,6 +46,9 @@ const EditService = () => {
 
   return (
     <div className="min-h-screen pt-14 bg-base-300">
+      <Helmet>
+        <title>EventDay | Edit Service</title>
+      </Helmet>
       <div className="bg-white bg-opacity-75 p-2 md:p-6 md:w-3/4 lg:w-2/4 mx-auto rounded-md py-10">
         <h2 className="text-3xl font-extrabold font-platypi text-center underline mb-12">
           Add Your Service

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Link, useLoaderData } from "react-router-dom";
 
 const ServiceDetail = () => {
@@ -5,6 +6,9 @@ const ServiceDetail = () => {
   console.log(service);
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <title>EventDay | Service Detail</title>
+      </Helmet>
       <div className="flex flex-col justify-center max-w-7xl p-6 shadow-md rounded sm:px-12 dark:bg-gray-50 dark:text-gray-800 mx-auto">
         <p className="font-platypi text-center mb-2">Provider Information:</p>
         <img

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { GiPriceTag } from "react-icons/gi";
 import { MdPlace } from "react-icons/md";
 import { Link, useLoaderData } from "react-router-dom";
@@ -6,6 +7,9 @@ const Services = () => {
   const services = useLoaderData();
   return (
     <div>
+      <Helmet>
+        <title>EventDay | Services</title>
+      </Helmet>
       <div className="text-center my-6 space-y-3">
         <h2 className="text-3xl md:text-5xl font-platypi">Our Services</h2>
         <p className="mx-6">

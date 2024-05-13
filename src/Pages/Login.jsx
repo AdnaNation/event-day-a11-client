@@ -1,5 +1,6 @@
 import { GoogleAuthProvider } from "firebase/auth";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
@@ -59,6 +60,9 @@ const Login = () => {
   };
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <title>EventDay | Login</title>
+      </Helmet>
       <div className="bg-white bg-opacity-75 p-2 md:p-6 md:w-3/4 lg:w-2/4 mx-auto rounded-md mt-10">
         <h2 className="text-2xl md:text-3xl font-extrabold font-platypi text-center underline mb-2">
           Login Please

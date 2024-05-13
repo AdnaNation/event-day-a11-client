@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
@@ -35,8 +36,20 @@ const ServiceToDo = () => {
       });
   };
   return (
-    <div>
-      <div className="space-y-2">
+    <div className="min-h-screen ">
+      <Helmet>
+        <title>EventDay | Service-To-Do</title>
+      </Helmet>
+      <div className="space-y-2 my-5">
+        {myServices.length === 0 ? (
+          <p className="text-red-500 font-bold text-center mt-10">
+            You have not added any service yet
+          </p>
+        ) : (
+          <p className="text-center text-3xl md:text-4xl font-platypi underline mt-4">
+            Booked Services
+          </p>
+        )}
         {myServices.map((service) => (
           <div
             key={service._id}
@@ -54,9 +67,12 @@ const ServiceToDo = () => {
                 <h2 className="text-2xl font-semibold">
                   {service.serviceName}
                 </h2>
-                <span className="text-sm dark:text-gray-600">
+                <p className="text-sm dark:text-gray-600">
                   Service ID: {service.serviceID}
-                </span>
+                </p>
+                <p className="text-sm dark:text-gray-600">
+                  Client: {service.clientName}
+                </p>
               </div>
               <div className="flex flex-col">
                 <span className="dark:text-gray-600">

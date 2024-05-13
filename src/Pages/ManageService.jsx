@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { GiPriceTag } from "react-icons/gi";
 import { MdPlace } from "react-icons/md";
 import { Link, useLoaderData } from "react-router-dom";
@@ -50,9 +51,19 @@ const ManageService = () => {
   };
   return (
     <div className=" min-h-screen my-5">
-      <h2 className="text-center text-3xl md:text-5xl my-3 underline font-platypi">
-        My Services
-      </h2>
+      <Helmet>
+        <title>EventDay | Manage Service</title>
+      </Helmet>
+      {myServices.length === 0 ? (
+        <p className="text-red-500 font-bold text-center mt-10">
+          You have not added any service yet
+        </p>
+      ) : (
+        <p className="text-center text-3xl md:text-4xl font-platypi underline my-4">
+          My Services
+        </p>
+      )}
+
       <div className="grid md:grid-cols-2 justify-between container mx-auto gap-8 ">
         {myServices.map((service) => (
           <div

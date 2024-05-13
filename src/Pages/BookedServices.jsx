@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
@@ -10,6 +11,9 @@ const BookedServices = () => {
 
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <title>EventDay | Booked Service</title>
+      </Helmet>
       <div>
         {myBookedServices.length === 0 ? (
           <p className="text-red-500 font-bold text-center mt-10">
