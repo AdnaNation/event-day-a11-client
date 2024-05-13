@@ -10,6 +10,7 @@ import ManageService from "../Pages/ManageService";
 import Register from "../Pages/Register";
 import Root from "../Pages/Root";
 import ServiceDetail from "../Pages/ServiceDetail";
+import ServiceToDo from "../Pages/ServiceToDo";
 import Services from "../Pages/Services";
 import PrivateRoute from "./PrivateRoute";
 
@@ -79,6 +80,15 @@ const router = createBrowserRouter([
       {
         path: "/bookedServices",
         element: <BookedServices></BookedServices>,
+        loader: () => fetch("http://localhost:5000/bookedServices"),
+      },
+      {
+        path: "/serviceToDo",
+        element: (
+          <PrivateRoute>
+            <ServiceToDo></ServiceToDo>
+          </PrivateRoute>
+        ),
         loader: () => fetch("http://localhost:5000/bookedServices"),
       },
     ],

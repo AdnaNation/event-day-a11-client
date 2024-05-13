@@ -11,15 +11,15 @@ const BookedServices = () => {
   return (
     <div className="min-h-screen">
       <div>
-        {myBookedServices.length === 0 && (
+        {myBookedServices.length === 0 ? (
           <p className="text-red-500 font-bold text-center mt-10">
             You have not booked any service yet
           </p>
+        ) : (
+          <p className="text-center text-3xl md:text-4xl font-platypi underline mt-4">
+            Booking Status
+          </p>
         )}
-
-        <p className="text-center text-3xl md:text-4xl font-platypi underline mt-4">
-          Booking Status
-        </p>
 
         <div className="space-y-2">
           {myBookedServices.map((service) => (
