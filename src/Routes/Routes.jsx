@@ -35,7 +35,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/addService",
-        element: <AddService></AddService>,
+        element: (
+          <PrivateRoute>
+            <AddService></AddService>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/services",
@@ -54,7 +58,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/booking/:id",
-        element: <BookService></BookService>,
+        element: (
+          <PrivateRoute>
+            <BookService></BookService>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/services/${params.id}`),
       },
@@ -79,7 +87,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/bookedServices",
-        element: <BookedServices></BookedServices>,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <BookedServices></BookedServices>
+          </PrivateRoute>
+        ),
         loader: () => fetch("http://localhost:5000/bookedServices"),
       },
       {

@@ -102,7 +102,7 @@ const ServiceToDo = () => {
                 <input
                   type="submit"
                   value="Save Changes"
-                  className="border bg-white w-24 ml-2 rounded text-xs  "
+                  className="border w-24 ml-2 rounded text-xs  "
                 />
               </form>
             </div>
