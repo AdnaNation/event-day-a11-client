@@ -17,7 +17,6 @@ const Register = () => {
     const email = form.email.value;
     const photo = form.photo.value;
     const password = form.password.value;
-    console.log(name, email, photo, password);
 
     // reset error
     setRegisterError("");
@@ -46,7 +45,6 @@ const Register = () => {
 
         logOut().then().catch();
         navigate("/login");
-        console.log(result.user);
       })
       .catch((error) => {
         console.log(error);
@@ -58,7 +56,7 @@ const Register = () => {
     googleSignIn(googleProvider)
       .then((result) => {
         const loggedInUser = result.user;
-        console.log(loggedInUser.photoURL);
+
         setUser(loggedInUser);
         Swal.fire({
           title: "Congrats!",

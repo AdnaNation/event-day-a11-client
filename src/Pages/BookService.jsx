@@ -6,7 +6,7 @@ import useAuth from "../hooks/useAuth";
 const BookService = () => {
   const { user } = useAuth();
   const service = useLoaderData();
-  console.log(service);
+
   const handleBooking = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -34,9 +34,9 @@ const BookService = () => {
       instruction,
       serviceStatus,
     };
-    console.log(bookedService);
+
     // send data to the server
-    fetch("http://localhost:5000/booking", {
+    fetch("https://event-day-server.vercel.app/booking", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -45,7 +45,6 @@ const BookService = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.insertedId) {
           Swal.fire({
             title: "Congrats!",

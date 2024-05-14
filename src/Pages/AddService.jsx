@@ -25,8 +25,8 @@ const AddService = () => {
       providerEmail,
       providerImgURL,
     };
-    // console.log(addedService);
-    fetch("http://localhost:5000/addService", {
+
+    fetch("https://event-day-server.vercel.app/addService", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -35,7 +35,6 @@ const AddService = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.insertedId) {
           Swal.fire({
             title: "Congrats!",

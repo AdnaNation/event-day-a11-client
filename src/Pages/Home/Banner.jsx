@@ -7,12 +7,12 @@ const Banner = () => {
         <div className="relative">
           <img
             className="absolute h-full w-full"
-            src="/src/assets/images/home-slider-slide-2.png"
+            src={"https://i.ibb.co/93Qt2jR/home-slider-slide-2.png"}
             alt=""
           />
           <img
             className=" h-full w-full"
-            src="./src/assets/images/home-2-banner-img-shape.png"
+            src={"https://i.ibb.co/S50Wpgx/home-2-banner-img-shape.png"}
             alt=""
           />
         </div>

@@ -3,13 +3,13 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const ServiceDetail = () => {
   const service = useLoaderData();
-  console.log(service);
+
   return (
     <div className="min-h-screen">
       <Helmet>
         <title>EventDay | Service Detail</title>
       </Helmet>
-      <div className="flex flex-col justify-center max-w-7xl p-6 shadow-md rounded sm:px-12 dark:bg-gray-50 dark:text-gray-800 mx-auto">
+      <div className="flex flex-col justify-center max-w-7xl p-6 shadow-md rounded sm:px-12 dark:bg-gray-50 dark:text-gray-800 mx-auto ">
         <p className="font-platypi text-center mb-2">Provider Information:</p>
         <img
           src={service.providerImgURL}
@@ -46,15 +46,17 @@ const ServiceDetail = () => {
               alt=""
             />
 
-            <div className="font-semibold text-gray-800 border pr-1 bg-base-200 rounded-sm shadow-xl">
+            <div className="font-semibold text-gray-400 border pr-1 bg-base-200 rounded-sm shadow-xl">
               {service.providerName}
             </div>
           </div>
-          <h2 className="text-xl font-semibold">{service.serviceName}</h2>
-          <span className="block pb-2 text-sm dark:text-gray-600">
+          <h2 className="text-xl text-black font-semibold">
+            {service.serviceName}
+          </h2>
+          <span className="block pb-2 text-sm text-black">
             Service Fee: ${service.price}
           </span>
-          <p>{service.description}</p>
+          <p className="text-black">{service.description}</p>
           <Link to={`/booking/${service._id}`} className="flex justify-end">
             <button className="btn bg-red-300 text-white">Book Now</button>
           </Link>

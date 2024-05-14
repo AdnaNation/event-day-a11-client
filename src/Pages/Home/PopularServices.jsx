@@ -5,7 +5,6 @@ import { Link, useLoaderData } from "react-router-dom";
 const PopularServices = () => {
   const services = useLoaderData();
   const popularServices = services.slice(0, 6);
-  // console.log(services);
 
   return (
     <div>
@@ -31,7 +30,7 @@ const PopularServices = () => {
                 alt=""
               />
 
-              <div className="font-semibold text-gray-800 border pr-1 bg-base-200 rounded-sm shadow-xl">
+              <div className="font-semibold text-gray-500 border pr-1 bg-base-200 rounded-sm shadow-xl">
                 {service.providerName}
               </div>
             </div>

@@ -23,7 +23,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/services"),
+        loader: () => fetch("https://event-day-server.vercel.app/services"),
       },
       {
         path: "/login",
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
       {
         path: "/services",
         element: <Services></Services>,
-        loader: () => fetch("http://localhost:5000/services"),
+        loader: () => fetch("https://event-day-server.vercel.app/services"),
       },
       {
         path: "/service/:id",
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(`https://event-day-server.vercel.app/services/${params.id}`),
       },
       {
         path: "/booking/:id",
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(`https://event-day-server.vercel.app/services/${params.id}`),
       },
       {
         path: "/manageService",
@@ -73,7 +73,7 @@ const router = createBrowserRouter([
             <ManageService></ManageService>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/services"),
+        loader: () => fetch("https://event-day-server.vercel.app/services"),
       },
       {
         path: "/editService/:id",
@@ -83,7 +83,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(`https://event-day-server.vercel.app/services/${params.id}`),
       },
       {
         path: "/bookedServices",
@@ -93,7 +93,8 @@ const router = createBrowserRouter([
             <BookedServices></BookedServices>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/bookedServices"),
+        loader: () =>
+          fetch("https://event-day-server.vercel.app/bookedServices"),
       },
       {
         path: "/serviceToDo",
@@ -102,7 +103,8 @@ const router = createBrowserRouter([
             <ServiceToDo></ServiceToDo>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/bookedServices"),
+        loader: () =>
+          fetch("https://event-day-server.vercel.app/bookedServices"),
       },
     ],
   },

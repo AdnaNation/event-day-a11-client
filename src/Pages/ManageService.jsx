@@ -26,13 +26,11 @@ const ManageService = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/services/${id}`, {
+        fetch(`https://event-day-server.vercel.app/services/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
-            // console.log(data);
-
             if (data.deletedCount > 0) {
               Swal.fire(
                 "Deleted!",

@@ -16,7 +16,6 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
 
     // reset error
     setLoginError("");
@@ -44,7 +43,7 @@ const Login = () => {
     googleSignIn(googleProvider)
       .then((result) => {
         const loggedInUser = result.user;
-        console.log(loggedInUser.photoURL);
+
         setUser(loggedInUser);
         Swal.fire({
           title: "Congrats!",

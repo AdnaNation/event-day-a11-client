@@ -16,7 +16,7 @@ const ServiceToDo = () => {
     const serviceStatus = form.serviceStatus.value;
 
     // send data to the server
-    fetch(`http://localhost:5000/bookedServices/${id}`, {
+    fetch(`https://event-day-server.vercel.app/bookedServices/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

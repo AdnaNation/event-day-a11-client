@@ -23,7 +23,7 @@ const EditService = () => {
     };
 
     // send data to the server
-    fetch(`http://localhost:5000/services/${service._id}`, {
+    fetch(`https://event-day-server.vercel.app/services/${service._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -32,7 +32,6 @@ const EditService = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.modifiedCount > 0) {
           Swal.fire({
             title: "Success!",
