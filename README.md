@@ -1,8 +1,15 @@
-# React + Vite
+# EventDay
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## [ Live Link ](https://event-day-85cf9.web.app)
 
-Currently, two official plugins are available:
+Click here for live site: [https://event-day-85cf9.web.app](https://event-day-85cf9.web.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- The website is about a event service website.
+- You can get here so many event services and take help.
+- Just home page and All service page are public route.
+- The other are private Route. And you have to login first to access these pages.
+- You can book services, post your services and so on.
+
+## [ Selected Category ]
+
+- assignment_category_0002
