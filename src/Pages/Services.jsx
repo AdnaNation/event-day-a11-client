@@ -1,10 +1,32 @@
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { GiPriceTag } from "react-icons/gi";
 import { MdPlace } from "react-icons/md";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Services = () => {
-  const services = useLoaderData();
+  // const services = useLoaderData();
+  const [services, setServices] = useState([]);
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    fetch(`https://event-day-server.vercel.app/all-services?search=${search}`)
+      .then((req) => req.json())
+      .then((data) => setServices(data));
+  }, [search]);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    const searchText = e.target.search.value;
+
+    setSearch(searchText);
+  };
+
+  const handleRefresh = () => {
+    setSearch("");
+  };
+
   return (
     <div>
       <Helmet>
@@ -16,6 +38,31 @@ const Services = () => {
           The below are our running services at this moment. Take service and
           make your day special.
         </p>
+      </div>
+      <form onSubmit={handleSearch}>
+        <div className="form-control">
+          <div className="mb-4 relative md:mx-auto">
+            <input
+              type="text"
+              name="search"
+              placeholder="Enter Service Name"
+              className="input input-bordered w-full md:w-[600px] relative"
+            />
+            <span className="absolute -ml-24">
+              <input
+                type="submit"
+                value="Search"
+                className="btn bg-gray-600 text-white"
+              />
+            </span>
+          </div>
+        </div>
+      </form>
+
+      <div className="text-center">
+        <button onClick={handleRefresh} className="btn">
+          Refresh
+        </button>
       </div>
       <div className="grid md:grid-cols-2 justify-between container mx-auto gap-8 ">
         {services.map((service) => (
